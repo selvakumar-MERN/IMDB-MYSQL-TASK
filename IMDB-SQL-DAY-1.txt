@@ -1,0 +1,103 @@
+-- create table for movie
+CREATE TABLE MOVIE (
+  id int PRIMARY KEY,
+  name varchar(100),
+  poster TEXT,
+  trailer TEXT,
+  genre TEXT,
+  review_id TEXT,
+  artist_id TEXT
+);
+
+-- insert movie
+INSERT INTO MOVIE
+VALUES (1,'Batman Begins','https://m.media-amazon.com/images/M/MV5BOTY4YjI2N2MtYmFlMC00ZjcyLTg3YjEtMDQyM2ZjYzQ5YWFkXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_FMjpg_UX1000_.jpg',
+'https://www.youtube.com/watch?v=qHhHIbNuok8','action,crime,drama','1,2,3','1,2,3,4,5,6,7');
+
+-- create review table
+CREATE TABLE REVIEW (
+  review_id int PRIMARY KEY,
+  id int,
+  reviewer TEXT,
+  rating float,
+  review TEXT
+ 
+);
+-- insert reviews
+INSERT INTO REVIEW
+VALUES(1,1,'Erick Estrada',3.5,'Batman Begins is important and delectable...');
+INSERT INTO REVIEW
+VALUES(2,1,'Brian Eggert',4,'Batman Begins tansforms the superhero genre...');
+INSERT INTO REVIEW
+VALUES(3,1,'Robin Holabird',4,'Played straight and with edge...');
+
+-- create artist table
+CREATE TABLE ARTIST (
+  artist_id int PRIMARY KEY,
+  id int,
+  artist TEXT,
+  skills TEXT,
+  role TEXT
+);
+
+--insert artist
+INSERT INTO ARTIST
+VALUES(1,1,'Christian Bale','Actor,Producer,Dancer','Bruce Wayne,Batman');
+INSERT INTO ARTIST
+VALUES(2,1,'Michael Caine','Actor,Producer,Additional Crew','Alfred');
+INSERT INTO ARTIST
+VALUES(3,1,'Katie Holmes','Actor,Producer,Director','Rachel Dawes');
+INSERT INTO ARTIST
+VALUES(4,1,'Gary Oldman','Actor,Producer,Director','Jim Gordon');
+INSERT INTO ARTIST
+VALUES(5,1,'Ken Watanabe','Actor,Producer,Additional Crew','Ras Al Ghul');
+INSERT INTO ARTIST
+VALUES(6,1,'Morgan Freeman','Actor,Producer,Director','Lucius Fox');
+INSERT INTO ARTIST
+VALUES(7,1,'Cillian Murphy','Actor,Producer,Director','Dr.Jonathan Crane,Scare crow');
+
+SELECT name,genre FROM MOVIE;
+SELECT name,poster,trailer FROM MOVIE;
+SELECT name,reviewer,rating,review FROM MOVIE INNER JOIN REVIEW ON MOVIE.id=REVIEW.id ;
+SELECT name,artist FROM MOVIE INNER JOIN ARTIST ON  MOVIE.id=ARTIST.id;
+SELECT artist,role FROM ARTIST;
+SELECT artist,SKILLS FROM ARTIST;
+
+--OUTPUT
+name	poster	trailer
+Batman Begins	https://m.media-amazon.com/images/M/MV5BOTY4YjI2N2MtYmFlMC00ZjcyLTg3YjEtMDQyM2ZjYzQ5YWFkXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_FMjpg_UX1000_.jpg	https://www.youtube.com/watch?v=qHhHIbNuok8
+
+name	                 genre
+Batman Begins	action,crime,drama
+
+name	                 reviewer	               rating	review
+Batman Begins	Erick Estrada	3.5	Batman Begins is important and delectable...
+Batman Begins	Brian Eggert	4	Batman Begins tansforms the superhero genre...
+Batman Begins	Robin Holabird	4	Played straight and with edge...
+
+name	                  artist
+Batman Begins	Christian Bale
+Batman Begins	Michael Caine
+Batman Begins	Katie Holmes
+Batman Begins	Gary Oldman
+Batman Begins	Ken Watanabe
+Batman Begins	Morgan Freeman
+Batman Begins	Cillian Murphy
+
+artist	                  role
+Christian Bale	Bruce Wayne,Batman
+Michael Caine	Alfred
+Katie Holmes	Rachel Dawes
+Gary Oldman	Jim Gordon
+Ken Watanabe	Ras Al Ghul
+Morgan Freeman	Lucius Fox
+Cillian Murphy	Dr.Jonathan Crane,Scare crow
+
+artist	                 SKILLS
+Christian Bale	Actor,Producer,Dancer
+Michael Caine	Actor,Producer,Additional Crew
+Katie Holmes	Actor,Producer,Director
+Gary Oldman	Actor,Producer,Director
+Ken Watanabe	Actor,Producer,Additional Crew
+Morgan Freeman	Actor,Producer,Director
+Cillian Murphy	Actor,Producer,Director
